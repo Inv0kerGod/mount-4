@@ -114,8 +114,8 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="{% static 'assets/img/logo-light.png'%}" class="logo logo-display" alt="Logo">
-                        <img src="{% static 'assets/img/logo-light.png'%}" class="logo logo-scrolled" alt="Logo">
+                        <img src="{{base.logo.url}}" class="logo logo-display" alt="Logo">
+                        <img src="{{base.logo.url}}" class="logo logo-scrolled" alt="Logo">
                     </a>
                 </div>
                 <!-- End Header Navigation -->
@@ -294,7 +294,7 @@
 
     <!-- Start Banner Area 
     ============================================= -->
-   <div class="banner-style-four-area text-light text-center bg-cover" style="background-image: url({% static 'assets/img/banner/14.jpg'%});">
+   <div class="banner-style-four-area text-light text-center bg-cover" style="background-image: url({{base.banner.url}});">
     <div class="banner-style-four-content shadow dark">
         <div class="container">
             <div class="row">
@@ -385,53 +385,21 @@
                         </div>
 
                         <div class="food-cat-items">
-                            <h2 class="flex-title mb-35"><img src="{% static 'assets/img/shape/fire.png'%}" alt="Image Not Found"> Наша популярная категория</h2>
+                            <h2 class="flex-title mb-35"><img src="{% static 'assets/img/shape/fire.png'%}" alt="Image Not Found"> Популярные категории</h2>
                             <div class="food-cat-carousel swiper">
                                 <!-- Additional required wrapper -->
                                 <div class="swiper-wrapper">
-                                    <!-- Single Item -->
-                                    <div class="swiper-slide">
+                                    {% for catorys in category %}
+                                    <div class="swiper-slide">  
                                         <a href="#">
-                                            <img src="{% static 'assets/img/menu/25.jpg'%}" alt="Image Not Found">
+                                            <img src="{{catorys.photo.url}}"width= "150px" height="180px"  alt="Image Not Found">
                                             <div class="overlay">
-                                                <span>Основные блюда</span>
-                                                <h5>Курица Альфредо</h5>
+                                                <span>{{catorys.title}}</span>
+                                                <h5>{{catorys.description}}</h5>
                                             </div>
                                         </a>
                                     </div>
-                                    <!-- End Single Item -->
-                                    <!-- Single Item -->
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="{% static 'assets/img/menu/26.jpg'%}" alt="Image Not Found">
-                                            <div class="overlay">
-                                                <span>Дессерты</span>
-                                                <h5>Чизкейк</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- End Single Item -->
-                                    <!-- Single Item -->
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="{% static 'assets/img/menu/27.jpg'%}" alt="Image Not Found">
-                                            <div class="overlay">
-                                                <span>Море продукты</span>
-                                                <h5>Жареный ласось</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- End Single Item -->
-                                    <!-- Single Item -->
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="{% static 'assets/img/menu/28.jpg'%}" alt="Image Not Found">
-                                            <div class="overlay">
-                                                <span>Напиток</span>
-                                                <h5>Какао</h5>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    {%endfor%}
                                     <!-- End Single Item -->
                                 </div>
     
@@ -1326,7 +1294,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center">
-                        <h4 class="sub-title">ШЕФ-ПОВАРА</h4>
+                        <h4 class="sub-title">лучшие повара</h4>
                         <h2 class="title">Познакомьтесь с нашими шеф-поварами</h2>
                     </div>
                 </div>
@@ -1334,13 +1302,14 @@
 
             <div class="row">
                 <!-- Single Item -->
+                {% for chefs in chef %}
                 <div class="col-xl-4 col-lg-6">
                     <div class="chef-style-one">
-                        <div class="chef-thumb">
-                            <img src="{% static 'assets/img/team/1.jpg'%}" alt="Image Not Found">
+                        <div class="chefs-thumb">
+                            <img src="{{chefs.photo.url}}" alt="Image Not Found">
                             <div class="info">
-                                <h4><a href="#">Александр Петло</a></h4>
-                                <span>Помощник шеф-повара</span>
+                                <h4><a href="#">{{chefs.name}}</a></h4>
+                                <span>{{chefs.type}}</span>
                             </div>
                             <ul class="social">
                                 <li>
@@ -1359,54 +1328,7 @@
                 </div>
                 <!-- End Single Item -->
                 <!-- Single Item -->
-                <div class="col-xl-4 col-lg-6">
-                    <div class="chef-style-one">
-                        <div class="chef-thumb">
-                            <img src="{% static 'assets/img/team/2.jpg'%}" alt="Image Not Found">
-                            <div class="info">
-                                <h4><a href="#">Мендия Юксеф</a></h4>
-                                <span>Бургер Кинг</span>
-                            </div>
-                            <ul class="social">
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Item -->
-                <!-- Single Item -->
-                <div class="col-xl-4 col-lg-6">
-                    <div class="chef-style-one">
-                        <div class="chef-thumb">
-                            <img src="{% static 'assets/img/team/3.jpg'%}" alt="Image Not Found">
-                            <div class="info">
-                                <h4><a href="#">Петро Вильям</a></h4>
-                                <span>Шеф-повар</span>
-                            </div>
-                            <ul class="social">
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
                 <!-- End Single Item -->
             </div>
         </div>
@@ -1428,53 +1350,34 @@
             <div class="row">
                 <!-- Single Item -->
                 <div class="col-lg-6">
-                    <div class="home-blog-style-one-item">
-                        <img src="{% static 'assets/img/blog/1.jpg'%}" alt="Image not Found">
-                        <div class="content">
-                            <div class="info">
-                                <div class="date"><strong>24</strong> Dec</div>
-                                <ul class="blog-meta">
-                                    <li>
-                                        Около <a href="#">Доктор Сохаг</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Бургер</a> ,
-                                        <a href="#">Пища</a>
-                                    </li>
-                                </ul>
-                                <h4 class="title">
-                                    <a href="#">Подобрал брюссельский бургер Sprouts с ветчиной</a>
-                                </h4>
-                                <a href="#" class="btn-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {%for k in news%}
+                {% comment %} </div> {% endcomment %}
                 <!-- End Single Item -->
                 <!-- Single Item -->
                 <div class="col-lg-6">
                     <div class="home-blog-style-one-item">
-                        <img src="{% static 'assets/img/blog/2.jpg'%}" alt="Image not Found">
+                        <img src="{{k.banner.url}}" alt="Image not Found">
                         <div class="content">
                             <div class="info">
                                 <div class="date"><strong>18</strong> Ноя</div>
                                 <ul class="blog-meta">
                                     <li>
-                                       Около <a href="#">Доктор Сохаг</a>
+                                        <a href="#">{{k.subtitle}}</a>
                                     </li>
                                     <li>
-                                        <a href="#">Пицца</a> ,
-                                        <a href="#">Пища</a>
+                                        <a href="#">{{k.title}}</a> ,
+                                        <a href="#">{{k.title}}</a>
                                     </li>
                                 </ul>
                                 <h4 class="title">
-                                    <a href="#">Этот сборный пассивный дом отличается высокой экологичностью</a>
+                                    <a href="#">{{k.estitle}}</a>
                                 </h4>
                                 <a href="#" class="btn-read-more">Читать далее<i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
+                {%endfor%}
                 <!-- End Single Item -->
             </div>
         </div>

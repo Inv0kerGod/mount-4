@@ -15,7 +15,7 @@ class Base(models.Model):
     )
     banner = models.ImageField(
         upload_to='banner/',
-        verbose_name="Фото баннера"
+        verbose_name="Фото баннера" 
     )
     phone = models.IntegerField(
         verbose_name="Номер телефона",
@@ -36,3 +36,76 @@ class Base(models.Model):
     class Meta:
         verbose_name = "Настройка сайта"
         verbose_name_plural = "Настройки сайта"
+
+class Popular_category(models.Model):
+    title = models.CharField(
+        max_length= 255,
+        verbose_name= "Название блюда"
+    )
+    description = models.CharField(
+        max_length= 255 ,
+        verbose_name="Описание блюда"
+    )
+    photo = models.ImageField(
+        upload_to="popular_category/",
+        verbose_name="Фото блюда"
+    )
+    def __str__(self) -> str:
+        return self.title
+    class Meta:
+        verbose_name = "Популярная категория"
+        verbose_name_plural= "Популяраные  категории"
+
+class Uor_chef(models.Model):
+    name = models.CharField(
+        max_length=255,
+        verbose_name="Имя Шеф-повара"
+    )
+    type = models.CharField(
+        max_length=255,
+        verbose_name="Тип повара"
+    )
+    photo = models.ImageField(
+        upload_to='photo_chef/',
+        verbose_name="Фото повара"
+    )
+    facebook = models.URLField(
+        verbose_name="Facebook повара",
+        blank=True, null=True
+    )
+    youtube = models.URLField(
+        verbose_name="youtube- повара",
+        blank=True, null=True
+    )
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = "Повар"
+        verbose_name_plural = "Повара"
+        
+class News(models.Model):
+    subtitle = models.CharField(
+        max_length=255,
+        verbose_name="Заловок"
+    )
+    title = models.CharField(
+        max_length=255,
+        verbose_name="описание"
+    )
+    estitle = models.CharField(
+        max_length=255,
+        verbose_name="Новость",
+        default=''
+    )
+    banner = models.ImageField(
+        upload_to='banner/',
+        verbose_name="Фото баннера" 
+    )
+    def __str__(self):
+        return self.subtitle
+    
+    class Meta:
+        verbose_name = "Новость"
+        verbose_name_plural = "Новости"
+    
